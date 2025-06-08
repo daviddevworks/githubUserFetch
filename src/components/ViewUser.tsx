@@ -1,4 +1,22 @@
-export default function ViewUser({data}) {
+export interface User {
+  login: string
+  name?: string
+  avatar_url?: string
+  bio?: string
+  email?: string
+  blog?: string
+  company?: string
+  location?: string
+  public_repos?: number
+  followers?: number
+  following?: number
+  html_url?: string
+  error?: string
+}
+export default function ViewUser({data: data}: {data: User}) {
+  if (data.error) return (
+    <div className="userNotFound"><h1>User Not Found</h1></div>
+  )
   return (
   <div className="userCard">
       <div className="user">
